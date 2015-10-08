@@ -12,6 +12,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w(
   static.css
   static.js
-  semantic-ui/dist/themes/default/assets/images/*
-  semantic-ui/dist/themes/default/assets/fonts/*
 )

@@ -20,8 +20,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # Slim templates generator for Rails 3 and 4
 gem 'slim-rails'
-# Bundler-like DSL + rake tasks for Bower on Rails
-gem 'bower-rails'
+# Semantic UI, converted to Sass and ready to drop into Rails & Compass.
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 # Forms made easy for Rails! It's tied to a simple DSL, with no opinion on markup.
 gem 'simple_form'
 # Provides a simple helper to get an HTML select list of countries
@@ -104,8 +104,6 @@ group :test do
   gem 'shoulda'
   gem 'shoulda-matchers'
 end
-
-gem 'rails_12factor', group: :production
 
 # =======================
 # INACTIVE DEFAULTS
