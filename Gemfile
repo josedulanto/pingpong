@@ -44,6 +44,8 @@ gem 'omniauth-github'
 gem 'leaderboard'
 # A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for Rails 3 and 4
 gem 'kaminari'
+# Fake data generator
+gem 'faker', '>= 1.4.3'
 
 # =======================
 # DEVELOPMENT
@@ -78,8 +80,6 @@ group :development, :test do
   gem 'guard-livereload', '~> 2.4', require: false
   gem 'guard-rspec', require: false
   gem 'guard-pow'
-  # Fake data generator
-  gem 'faker', '>= 1.4.3'
 end
 
 # =======================
@@ -104,6 +104,8 @@ group :test do
   gem 'shoulda'
   gem 'shoulda-matchers'
 end
+
+gem 'rails_12factor', group: :production
 
 # =======================
 # INACTIVE DEFAULTS
