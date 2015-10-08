@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Player1:
+  = @match.player1
+p
+  strong Player2:
+  = @match.player2
+p
+  strong Player1 score:
+  = @match.player1_score
+p
+  strong Player2 score:
+  = @match.player2_score
+p
+  strong Confirmed:
+  = @match.confirmed
+
+= link_to 'Edit', edit_match_path(@match)
+'|
+= link_to 'Back', matches_path

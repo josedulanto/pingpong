@@ -11,7 +11,7 @@
 # about supported directives.
 #
 #= require base/all
-#= require dashboard
+#= require matches
 
 window.waitForFinalEvent = (() ->
   timers = {}

@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   
   has_many :identities, dependent: :destroy
+  has_many :matches_as_player1, foreign_key: :player1_id, class_name: Match
+  has_many :matches_as_player2, foreign_key: :player2_id, class_name: Match
   
   attr_accessor :current_identity
   
@@ -14,6 +16,10 @@ class User < ActiveRecord::Base
   validates_presence_of :password, if: :password_required?
   validates_confirmation_of :password, if: :password_required?
   validates_length_of :password, within: Devise.password_length, allow_blank: true
+  
+  def matches
+    matches_as_player1 + matches_as_player2
+  end
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
 

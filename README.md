@@ -1,126 +1,54 @@
-Rails Boilerplate
-===
-Basically I got tired of doing the same steps over and over again to bring a Rails project to life and that's why a Rails 4 Boilerplate like this was the way to go. The features included here suits my needs and I hope they suit yours too. This has a lot of room for improvement so feel free to ask me or better yet fork it, improve it and PR it ;)
+Please devote 4 hours to the following task.
 
-Includes:
----
-* [Rails 4](http://rubyonrails.org/): Rails is a web-application framework that includes everything needed to create database-backed web applications according to the Model-View-Controller (MVC) pattern.
-* [PostgreSQL](http://www.postgresql.org/): PostgreSQL is a powerful, open source object-relational database system.
-* [Redis](http://redis.io/) (to handle sessions and cache): Redis is an open source (BSD licensed), in-memory data structure store, used as database, cache and message broker.
-* Testing with [RSpec](http://rspec.info/), [Capybara](https://github.com/jnicklas/capybara), [Factory Girl](https://github.com/thoughtbot/factory_girl), [Faker](https://github.com/stympy/faker) and [Poltergeist](https://github.com/teampoltergeist/poltergeist).
-* [Devise](https://github.com/plataformatec/devise): Flexible authentication solution for Rails with Warden. All views styled with Semantic-UI.
-* [Omniauth](https://github.com/intridea/omniauth): OmniAuth is a flexible authentication system utilizing Rack middleware. Devise integration with providers like [Facebook](https://github.com/mkdynamic/omniauth-facebook), [Twitter](https://github.com/arunagw/omniauth-twitter), [Google+](https://github.com/zquestz/omniauth-google-oauth2), [LinkedIn](https://github.com/decioferreira/omniauth-linkedin-oauth2), [GitHub](https://github.com/intridea/omniauth-github) and [Instagram](https://github.com/ropiku/omniauth-instagram).
-* [Slim](https://github.com/slim-template/slim): Slim templates generator for Rails 3 and 4. Slim is a template language whose goal is reduce the syntax to the essential parts without becoming cryptic.
-* [Semantic-UI](http://www.semantic-ui.com/) (I had enough of Twitter Bootstrap): Semantic is a UI component framework based around useful principles from natural language.
-* [Bower](https://github.com/rharriso/bower-rails/) (to manage assets): Bundler-like DSL + rake tasks for Bower on Rails.
-* [Guard](https://github.com/guard/guard): Guard is a command line tool to easily handle events on file system modifications. Included with extensions for [Spring](https://github.com/guard/guard-spring), [CoffeeScript](https://github.com/guard/guard-coffeescript), [SASS](https://github.com/guard/guard-sass), [LiveReload](https://github.com/guard/guard-livereload), [RSpec](https://github.com/guard/guard-rspec) and [Pow](https://github.com/guard/guard-pow).
-* [Figaro](https://github.com/laserlemon/figaro): Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file.
-* [Rack mini profiler](https://github.com/MiniProfiler/rack-mini-profiler): Profiler for your development and production Ruby rack apps.
-* [Pry](http://pryrepl.org/): An IRB alternative and runtime developer console.
-* [Quiet Assets](https://github.com/evrone/quiet_assets): Mutes assets pipeline log messages.
-* [Better Errors](https://github.com/charliesome/better_errors): Better error page for Rack apps.
-* [Simple Form](https://github.com/plataformatec/simple_form): Forms made easy for Rails! It's tied to a simple DSL, with no opinion on markup. I included some wrapper for Semantic-UI inputs.
-* [Letter Opener Web](https://github.com/fgrehm/letter_opener_web): A web interface for browsing Ruby on Rails sent emails. If you are in developer environment and you "send" an email, you can check how it looks or if it was "delivered" by visiting `http://<your-local-domain>/letter_opener`
+## Challenge
 
-My setup:
----
-You could skip this section but I wanted to show you some of the tools I use in my projects that could be useful for you too.
-* [Pow](http://pow.cx/): Pow is a zero-config Rack server for Mac OS X. Have it serving your apps locally in under a minute. If you are on a Mac I recommend [Anvil](http://anvilformac.com/) which handles sites with pow very well, you could also do `brew install pow` in console.
-* [Redis Desktop Manager](http://redisdesktop.com/): Cross-platform open source Redis DB management tool.
-* [Postgres.app](http://postgresapp.com/): If you are on a Mac and don't have PostgreSQL, the easiest way to get started is through this app.
-* [RVM](https://rvm.io/): A command-line tool which allows you to easily install, manage, and work with multiple ruby environments from interpreters to sets of gems.
-* [LiveReload](http://livereload.com/): Monitors changes in the file system. As soon as you save a file, it is preprocessed as needed, and the browser is refreshed. If you use the Chrome browser then install the [LiveReload extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en).
+Create a ping pong bracket which keeps track of who is the current office champion at ping pong.  
 
-Instructions:
----
-### Clone
+## Requirements
 
-Clone this project to your machine.
+1. Allow players to register and login
+2. Allow a player to view the ping pong bracket rankings in the office
+3. Allow a player to log the result of a series of games (time played, score of each game).
+4. Allow a player to view their ping pong results history
+5. Allow a player to customize their name and password and any other properties
 
-```
-git clone https://github.com/josedulanto/rails-boilerplate && cd rails-boilerplate
-```
+Games are inputted on the honor system. 
 
-### Ruby Gemset and Ruby Version
+## Games
 
-Feel free to change the contents of the files `.ruby-version` which states the version of ruby to use (this boilerplate uses `ruby-2.2.3`) and `.ruby-gemset` which states the RVM gemset to use (this boilerplate uses `rails_bolerplate`, but you can use whatever name you want for your gemset). You could run `rvm current` to know which ruby version and gemset is being used.
+Games follow standard ping pong rules.  They are games to 21, which need to be won by a two point margin. 
 
-### Gems
+## Leaderboard
 
-Fetch gems running bundler with:
+Please design how the algorithm for how a fair leaderboard should work.  Please feel free to consult any refernece that you like. 
 
-```
-bundle install
-```
+Please keep in mind the following factors:
 
-### Configuration
+1. Not all wins should count the same. eg. a player ranked 4 beating a player ranked 5 should not count the same as a player ranked 5 beating a player ranked 1. 
+2. When the leaderboard is first created all the users will be equal in ranking
 
-Rename the file `config/application.yml.example` to `config/application.yml` and change the values there.
+## App
 
-```
-# I prefilled this for you, but change them according to your needs.
-APP_NAME: 'Rails Boilerplate'
-APP_DOMAIN: 'rails-boilerplate.dev'
-DEVISE_MAIL_SENDER: 'rails.boilerplate@example.com'
-REDIS_SERVER_URL: 'redis://localhost:6379/0/cache'
-```
+Please add all necessary models, controllers, gems and tests. The UI is totally up to you.  Feel free to use bootstrap or any other framework.
 
-Run the command `bundle exec rake secret` in console/terminal to generate the different values for `SECRET_KEY_BASE` and `DEVISE_SECRET_KEY`
+## Evaluation criteria
 
-#### Omniauth providers
+We are evaluating you as a backend ruby developer so we are most interested in evaluating the following:
 
-All omniauth providers are disabled by default, but you can enable them by uncommenting the lines at the bottom of the file `config/initializers/devise.rb`
+1. Can you complete the assignment as tasked? 
+2. Can you create a clean architecture?
+3. Is your code tested?
+4. Can you walk through your code and explain how it works? 
 
-```
-# ==> UNCOMMENT THE LINES BELOW IF YOU WANT TO USE ANY OF THOSE AS OMNIAUTH PROVIDERS
+## Bonus points
 
-# config.omniauth :twitter, ENV["TWITTER_APP_ID"], ENV["TWITTER_APP_SECRET"]
-# config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"], scope: "email"
-# config.omniauth :google_oauth2, ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET'], scope: "email,profile,offline" #, prompt: "consent"
-# config.omniauth :instagram, ENV['INSTAGRAM_APP_ID'], ENV['INSTAGRAM_APP_SECRET']
-# config.omniauth :linkedin, ENV['LINKEDIN_APP_ID'], ENV['LINKEDIN_APP_SECRET'], scope: 'r_basicprofile r_emailaddress'
-# config.omniauth :github, ENV['GITHUB_APP_ID'], ENV['GITHUB_APP_SECRET'], scope: 'user:email'
-```
+You get bonus points for the following:
 
-For those providers you choose to enable, you have to set their `<PROVIDER>_APP_ID` and `<PROVIDER>_APP_SECRET` within the `config/application.yml` file, please read it carefully.
+1. Deploying the app to a host (ideally heroku)
+2. Integration with Gravatator (headshot)
+3. Consideration in the leaderboard for time away from the office and winning streaks
+4. A handshaking process for approving the score of a game
 
-### Database
+## Completion
 
-Rename the file `config/database.yml.example` to `config/database.yml` then configure it and run:
-
-```
-bundle exec rake db:setup
-```
-
-### Bower
-
-Fetch assets (Semtantic-UI) with Bower to your `vendor/assets/bower_components` folder with:
-
-```
-bundle exec rake bower:install
-```
-
-To fix assets paths within Bower packages so they work with the Rails Assets Pipeline run:
-
-```
-bundle exec rake bower:resolve
-```
-
-### Server
-
-If you have [Anvil](http://anvilformac.com/) or [Pow](http://pow.cx/) then create the server and navigate to `http://rails-boilerplate.dev/` (or whatever domain you configured) or run `bundle exec rails s` and navigate to `http://localhost:3000`
-
-Welcome to your rails application.
-
-### LiveReload
-
-In another console/terminal run Guard with `bundle exec guard` and if you installed the LiveReload Chrome extension then hit the `Enable LiveReload` button (you should have it in your toolbar next to the URL bar).
-
-ToDo:
----
-* Authorization capabilities.
-* Server automation.
-* Some admin panel.
-* Your suggestion here.
-
-> Be happy and feel free to fork it, do a PR or suggest any improvements.
+Please upload your code to a public repository and send me a link when it is ready. 

@@ -9,14 +9,14 @@
       = link_to "Careers", "#", class: "item"
       .right.item
         - if signed_in?
-          = link_to "Go to application", dashboard_path, class: "ui inverted button"
+          = link_to "Go to application", leaderboard_path, class: "ui inverted button"
         - else
           = link_to "Log in", new_user_session_path, class: "ui inverted button"
           = link_to "Sign up", new_user_registration_path, class: "ui inverted button"
   .ui.text.container
     h1.ui.inverted.header
-      | Imagine-a-Company
-    h2 Do whatever you want when you want to.
+      | Ping Pong
+    h2 Keep scores for everyday pingpong matches against your coworkers
     .ui.huge.primary.button
       | Get Started
       i.right.arrow.icon

@@ -40,6 +40,10 @@ gem 'omniauth-linkedin-oauth2'
 gem 'omniauth-instagram'
 gem 'omniauth-google-oauth2', git: 'https://github.com/zquestz/omniauth-google-oauth2', branch: 'master'
 gem 'omniauth-github'
+# Leaderboards backed by Redis in Ruby
+gem 'leaderboard'
+# A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for Rails 3 and 4
+gem 'kaminari'
 
 # =======================
 # DEVELOPMENT
@@ -53,6 +57,8 @@ group :development do
   gem 'binding_of_caller'
   # A web interface for browsing Ruby on Rails sent emails
   gem 'letter_opener_web'
+  # Rails Console on the Browser.
+  gem 'web-console'
 end
 
 group :development, :test do

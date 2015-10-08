@@ -1,0 +1,12 @@
+= simple_form_for(@match) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :player1
+    = f.input :player2
+    = f.input :player1_score
+    = f.input :player2_score
+    = f.input :confirmed
+
+  .form-actions
+    = f.button :submit

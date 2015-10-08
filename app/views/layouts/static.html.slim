@@ -16,7 +16,7 @@ html
         = link_to "Careers", "#", class: "item"
         .right.menu
           - if signed_in?
-            .item= link_to "Go to application", dashboard_path, class: "ui primary button"
+            .item= link_to "Go to application", leaderboard_path, class: "ui primary button"
           - else
             .item= link_to "Log in", new_user_session_path, class: "ui button"
             .item= link_to "Sign up", new_user_registration_path, class: "ui primary button"
@@ -27,7 +27,7 @@ html
       = link_to "Careers", "#", class: "item"
       .right.menu
         - if signed_in?
-          .item= link_to "Go to application", dashboard_path, class: "ui primary button"
+          .item= link_to "Go to application", leaderboard_path, class: "ui primary button"
         - else
           .item= link_to "Log in", new_user_session_path, class: "ui button"
           .item= link_to "Sign up", new_user_registration_path, class: "ui primary button"

@@ -24,7 +24,12 @@ Rails.application.routes.draw do
     delete "/" => "users/registrations#destroy"
   end
   
-  get "/dashboard" => "dashboard#index"
+  resources :matches, except: [:new, :create, :show] do
+    patch "/confirm" => "matches#confirm", on: :member
+  end
+  post "/challenge/:player2" => "matches#create", as: 'challenge'
+  
+  get "/leaderboard" => "leaderboard#show"
   
   root to: "static#index"
 

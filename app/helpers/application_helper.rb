@@ -38,4 +38,8 @@ module ApplicationHelper
     session["current_user_image"] || "square_image.png"
   end
   
+  def email_from_member_data(member_data)
+    member_data.match(/[a-z\d._%+-]+@[a-z\d.-]+\.[a-z]{2,4}\b/i).to_s
+  end
+  
 end

@@ -7,10 +7,11 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  body class=controller_action_class()
-    = render "shared/sidebar"
-    .pusher
-      = render "shared/navbar"
-      .ui.main.fluid.container
-        = flash_messages(flash)
-        = yield
+    body class=controller_action_class()
+      .pusher
+        = render "shared/navbar"
+        .ui.main.fluid.container
+          = flash_messages(flash)
+          .ui.basic.segment= yield
+
+      = yield :js

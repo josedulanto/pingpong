@@ -2,15 +2,8 @@
   / MENU SHOWN FOR SCREEN SIZES OF TABLET AND UP
   .computer.tablet.only.row
     .ui.top.fixed.borderless.main.menu
-      = link_to "#", class: "item toc" do
-        i.sidebar.icon
-        | Sidebar
-      = link_to ENV['APP_NAME'], dashboard_path, class: "header item"
+      = link_to ENV['APP_NAME'], leaderboard_path, class: "header item"
       .right.menu
-        .item
-          .ui.action.left.icon.transparent.input
-            i.search.icon
-            input placeholder=("I'm looking for ...") type="text" /
         - if user_signed_in?
           .ui.dropdown.item tabindex="0" 
             .text
@@ -18,7 +11,8 @@
               = current_user.name
             i.dropdown.icon
             .menu tabindex="-1" 
-              = link_to "Dashboard", dashboard_path, class: "item"
+              = link_to "Leaderboard", leaderboard_path, class: "item"
+              = link_to "My Matches", matches_path, class: "item"
               .divider
               = link_to "Account", edit_user_registration_path, class: "item"
               .divider
@@ -31,17 +25,11 @@
   / MENU SHOWN FOR SCREEN SIZES OF MOBILE AND BELOW
   .mobile.only.row
     .ui.top.fixed.borderless.main.menu
-      = link_to "#", class: "item toc" do
-        i.sidebar.icon
-      = link_to ENV['APP_NAME'], dashboard_path, class: "brand item"
+      = link_to ENV['APP_NAME'], leaderboard_path, class: "brand item"
       .right.menu.open
         = link_to "", class: "menu item" do
           i.sidebar.icon
     #responsive-main-menu.ui.fixed.stackable.fluid.hidden.menu
-      .item.search
-        .ui.huge.action.left.icon.transparent.input
-          i.search.icon
-          input placeholder=("I'm looking for ...") type="text" /
       - if user_signed_in?
         .ui.dropdown.item tabindex="0" 
           .text
@@ -49,7 +37,8 @@
             = current_user.name
           i.dropdown.icon
           .menu tabindex="-1" 
-            = link_to "Dashboard", dashboard_path, class: "item"
+            = link_to "Leaderboard", leaderboard_path, class: "item"
+            = link_to "My Matches", matches_path, class: "item"
             .divider
             = link_to "Account", edit_user_registration_path, class: "item"
             .divider

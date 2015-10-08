@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   before_filter :ensure_signup_complete  
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :set_leaderboard
   
   layout :layout_by_resource
   
@@ -29,4 +29,9 @@ class ApplicationController < ActionController::Base
       "application"
     end
   end
+    
+  def set_leaderboard
+    @leaderboard ||= Leaderboard.new("pingpong", Leaderboard::DEFAULT_OPTIONS, redis_connection: Redis.current)
+  end
+    
 end

@@ -1,0 +1,23 @@
+h1.ui.dividing.header Leaderboard
+
+table.ui.striped.stackable.mobile.table
+  thead
+    tr
+      th #
+      th Player
+      th Score
+      th.right.aligned
+
+  tbody
+    - @users.each do |user|
+      tr class="#{'active' if user[:member].to_i == current_user.id}"
+        td= user[:rank]
+        td= email_from_member_data(user[:member_data])
+        td= user[:score]
+        td.right.aligned
+          - if user[:member].to_i == current_user.id
+            = link_to "My matches", matches_path, class: "ui icon primary button"
+          - else
+            = link_to "Challenge!", challenge_path(player2: user[:member].to_i), method: :post, data: { confirm: "Are you sure you want to challenge #{email_from_member_data(user[:member_data])}?" }, class: "ui icon teal button"
+            
+= paginate @page_array
