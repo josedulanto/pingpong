@@ -47,6 +47,8 @@ gem 'leaderboard'
 gem 'kaminari'
 # Fake data generator
 gem 'faker', '>= 1.4.3'
+# Add Gravatars to your Rubies/Rails (and now Javascript)!
+gem 'gravtastic'
 
 # =======================
 # DEVELOPMENT

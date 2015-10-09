@@ -1,6 +1,8 @@
 require 'services/pingpong_board'
 
 class User < ActiveRecord::Base
+  include Gravtastic
+  gravtastic
   
   has_many :identities, dependent: :destroy
   has_many :matches_as_player1, foreign_key: :player1_id, class_name: Match
@@ -22,7 +24,7 @@ class User < ActiveRecord::Base
   # Override Devise::Confirmable#after_confirmation
   def after_confirmation
     leaderboard = PingPongBoard.default
-    leaderboard.rank_member(id, 0, { email: email })
+    leaderboard.rank_member(id, 0, { email: email, gravatar_url: gravatar_url })
   end
   
   def matches

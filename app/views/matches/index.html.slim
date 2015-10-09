@@ -13,8 +13,12 @@ table.ui.striped.stackable.mobile.table
   tbody
     - @matches.each do |match|
       tr
-        td= match.player1.email
-        td= match.player2.email
+        td
+          = image_tag match.player1.gravatar_url, alt: match.player1.name, class: "ui avatar image"
+          = match.player1.name
+        td
+          = image_tag match.player2.gravatar_url, alt: match.player2.name, class: "ui avatar image"
+          = match.player2.name
         - if current_user == match.player1 && !match.confirmed
           = simple_form_for match, html: {class: "with-message"} do |f|
             = f.error_notification

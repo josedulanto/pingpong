@@ -35,11 +35,15 @@ module ApplicationHelper
   end
   
   def current_user_image
-    session["current_user_image"] || "square_image.png"
+    current_user.try(:gravatar_url) || "square_image.png"
   end
   
   def email_from_member_data(member_data)
     member_data.match(/[a-z\d._%+-]+@[a-z\d.-]+\.[a-z]{2,4}\b/i).to_s
+  end
+  
+  def gravatar_url_from_member_data(member_data)
+    eval(member_data)[:gravatar_url]
   end
   
 end
