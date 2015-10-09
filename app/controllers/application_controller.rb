@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
-  before_filter :ensure_signup_complete  
-  before_action :authenticate_user!, :set_leaderboard
+  before_filter :ensure_signup_complete, :set_leaderboard
+  before_action :authenticate_user!
   
   layout :layout_by_resource
   
