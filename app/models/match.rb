@@ -5,7 +5,7 @@ class Match < ActiveRecord::Base
   
   validates :player1, :player2, presence: true
   validate :only_one_unconfirmed_match_per_opponent, on: :create
-  validate :win_by_two_points_margin, if: proc{ |match| !match.confirmed }, on: :update
+  validate :win_by_two_points_margin, :winning_score_above_eleven, if: proc{ |match| !match.confirmed }, on: :update
   
   scope :with_players, ->(player1_id, player2_id) { where("(player1_id=? AND player2_id=?) OR (player2_id=? AND player1_id=?)", player1_id, player2_id, player1_id, player2_id) }
   scope :confirmed, -> { where(confirmed: true) }
@@ -20,6 +20,10 @@ class Match < ActiveRecord::Base
   end
   
   private
+  
+    def winning_score_above_eleven
+      errors.add(:base, "The winner should have at least eleven points") if [player1_score, player2_score].max < 11
+    end
   
     def win_by_two_points_margin
       errors.add(:base, "The winner should have two points more than its opponent") if (player1_score - player2_score).abs < 2
