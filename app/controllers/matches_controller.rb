@@ -86,7 +86,7 @@ class MatchesController < ApplicationController
     end
     
     def set_matches
-      @matches = Match.where("player1_id=? OR player2_id=?", current_user, current_user)
+      @matches = Match.where("player1_id=? OR player2_id=?", current_user, current_user).order("created_at DESC")
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
