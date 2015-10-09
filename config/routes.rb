@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     delete "/" => "users/registrations#destroy"
   end
   
-  resources :matches, except: [:new, :create, :show] do
+  resources :matches, except: [:new, :edit, :show] do
     patch "/confirm" => "matches#confirm", on: :member
   end
   post "/challenge/:player2" => "matches#create", as: 'challenge'
