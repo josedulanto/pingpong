@@ -1,5 +1,6 @@
+require 'services/pingpong_board'
 # Create users
-leaderboard = Leaderboard.new("pingpong", Leaderboard::DEFAULT_OPTIONS, redis_connection: Redis.current)
+leaderboard = PingPongBoard.default
 
 50.times do
   user = User.create(email: Faker::Internet.email, password: "password", password_confirmation: "password", confirmed_at: Time.now)

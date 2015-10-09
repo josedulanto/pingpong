@@ -1,3 +1,5 @@
+require 'services/pingpong_board'
+
 class User < ActiveRecord::Base
   
   has_many :identities, dependent: :destroy
@@ -16,6 +18,12 @@ class User < ActiveRecord::Base
   validates_presence_of :password, if: :password_required?
   validates_confirmation_of :password, if: :password_required?
   validates_length_of :password, within: Devise.password_length, allow_blank: true
+  
+  # Override Devise::Confirmable#after_confirmation
+  def after_confirmation
+    leaderboard = PingPongBoard.default
+    leaderboard.rank_member(id, 0, { email: email })
+  end
   
   def matches
     matches_as_player1 + matches_as_player2

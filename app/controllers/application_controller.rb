@@ -1,3 +1,5 @@
+require 'services/pingpong_board'
+
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -31,7 +33,7 @@ class ApplicationController < ActionController::Base
   end
     
   def set_leaderboard
-    @leaderboard ||= Leaderboard.new("pingpong", Leaderboard::DEFAULT_OPTIONS, redis_connection: Redis.current)
+    @leaderboard ||= PingPongBoard.default
   end
     
 end
