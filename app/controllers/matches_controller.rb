@@ -52,14 +52,20 @@ class MatchesController < ApplicationController
   def confirm
     respond_to do |format|
       if @match.update(confirmed: true)
-        winner_score = 1
+        base_points = 1.0
         winner = @match.winner
         loser = @match.loser
         
         @winner = @leaderboard.score_and_rank_for(winner.id)
         @loser = @leaderboard.score_and_rank_for(loser.id)
-                
-        winner_score = (1.0 + ((@loser[:rank].to_f - @winner[:rank].to_f)/10.0)) if @winner[:rank].to_i < @loser[:rank].to_i
+        
+        winner_score = case @winner[:rank].to_i <=> @loser[:rank].to_i
+          when -1 then 3.0
+          when 0
+            @leaderboard.rank_member(loser.id, @loser[:score].to_i+base_points)
+            base_points
+          when 1 then 5.0
+          end
         
         @leaderboard.rank_member(winner.id, @winner[:score].to_i+winner_score)
         
